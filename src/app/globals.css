@@ -1,26 +1,334 @@
 @import "tailwindcss";
 
 :root {
+  /* Brutalist Theme Default */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+
+  --card: #ffffff;
+  --card-foreground: #000000;
+
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+
+  --secondary: #e5e5e5;
+  --secondary-foreground: #000000;
+
+  --muted: #f4f4f5;
+  --muted-foreground: #52525b;
+
+  --accent: #d4d4d8;
+  --accent-foreground: #000000;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #000000;
+  --input: #000000;
+  --ring: #000000;
+
+  --radius: 0rem;
+}
+
+/* Dark Mode - Inverted Brutalism */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+
+    --card: #000000;
+    --card-foreground: #ffffff;
+
+    --popover: #000000;
+    --popover-foreground: #ffffff;
+
+    --primary: #ffffff;
+    --primary-foreground: #000000;
+
+    --secondary: #27272a;
+    --secondary-foreground: #ffffff;
+
+    --muted: #18181b;
+    --muted-foreground: #a1a1aa;
+
+    --accent: #27272a;
+    --accent-foreground: #ffffff;
+
+    --destructive: #7f1d1d;
+    --destructive-foreground: #ffffff;
+
+    --border: #ffffff;
+    --input: #ffffff;
+    --ring: #ffffff;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-outfit);
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  font-family: var(--font-sans);
+}
+
+/* Brutalist Utilities */
+.brutal-border {
+  border: 2px solid var(--border);
+}
+
+.brutal-shadow {
+  box-shadow: 4px 4px 0px 0px var(--border);
+}
+
+.brutal-shadow-sm {
+  box-shadow: 2px 2px 0px 0px var(--border);
+}
+
+.brutal-shadow-hover:hover {
+  box-shadow: 6px 6px 0px 0px var(--border);
+  transform: translate(-2px, -2px);
+  transition: all 0.2s ease-in-out;
+}
+
+.brutal-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0px 0px var(--border);
+}
+
+/* Glassmorphism Removal / Overrides if stuck in cache */
+.glass,
+.glass-card {
+  background: var(--card) !important;
+  backdrop-filter: none !important;
+  border: 2px solid var(--border) !important;
+  box-shadow: 4px 4px 0px 0px var(--border) !important;
+}
+
+/* Vibrant Mode Overrides */
+body.vibrant-mode {
+  --background: #ffffff;
+  /* Default bg remains white, sections will override */
+}
+
+/* Section Colors in Vibrant Mode */
+body.vibrant-mode section#hero {
+  background-color: #ffde21 !important;
+  /* Yellow */
+  color: black !important;
+}
+
+body.vibrant-mode section#about {
+  background-color: #00f0ff !important;
+  /* Cyan */
+  color: black !important;
+}
+
+body.vibrant-mode section#experience {
+  background-color: #3b82f6 !important;
+  /* Blue */
+  color: black !important;
+}
+
+body.vibrant-mode section#skills {
+  background-color: #ccff00 !important;
+  /* Lime */
+  color: black !important;
+}
+
+body.vibrant-mode section#projects {
+  background-color: #ff5e00 !important;
+  /* Orange */
+  color: black !important;
+}
+
+body.vibrant-mode section#education {
+  background-color: #bc13fe !important;
+  /* Purple */
+  color: black !important;
+}
+
+body.vibrant-mode section#contact {
+  background-color: #00ff9d !important;
+  /* Mint */
+  color: black !important;
+}
+
+body.vibrant-mode section#certifications {
+  background-color: #6366f1 !important;
+  /* Electric Indigo */
+  color: black !important;
+}
+
+body.vibrant-mode section#achievements {
+  background-color: #14b8a6 !important;
+  /* Teal */
+  color: black !important;
+}
+
+body.vibrant-mode nav {
+  background-color: #ffffff !important;
+  border-bottom: 2px solid black !important;
+  color: black !important;
+}
+
+/* Force Navbar text and icons to be black */
+body.vibrant-mode nav * {
+  color: black !important;
+  border-color: black;
+}
+
+/* Exception for the Vibrant Toggle "Active" state which needs white text */
+body.vibrant-mode nav button[data-state="on"],
+body.vibrant-mode nav .bg-purple-600 {
+  color: white !important;
+  background-color: #9333ea !important;
+  /* Purple-600 */
+  border-color: black !important;
+}
+
+/* Ensure borders remain black in vibrant mode globally */
+body.vibrant-mode * {
+  border-color: black;
+}
+
+/* Cards in Vibrant Mode: High Contrast Black Cards with White Text */
+body.vibrant-mode .card,
+body.vibrant-mode .brutal-card,
+body.vibrant-mode .border-2 {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.vibrant-mode .card *,
+body.vibrant-mode .brutal-card *,
+body.vibrant-mode .border-2 * {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* Re-override strict black elements on coloring sections if needed, 
+   but generally Black Cards on Colored BG looks good (Neo-Brutalist). 
+   Let's keep specific text overrides if cards are behaving weirdly. */
+
+/* DEFAULT: Text on the bright section backgrounds should be BLACK */
+body.vibrant-mode section {
+  color: #000000 !important;
+}
+
+body.vibrant-mode .text-muted-foreground,
+body.vibrant-mode p,
+body.vibrant-mode span,
+body.vibrant-mode div {
+  color: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* CARDS & BORDERED BOXES: Text inside should be WHITE */
+body.vibrant-mode .card,
+body.vibrant-mode .brutal-card,
+body.vibrant-mode .border-2 {
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+/* Force specific text elements to be WHITE inside cards/boxes */
+body.vibrant-mode .card .text-primary,
+body.vibrant-mode .brutal-card .text-primary,
+body.vibrant-mode .border-2 .text-primary,
+body.vibrant-mode .card .text-muted-foreground,
+body.vibrant-mode .brutal-card .text-muted-foreground,
+body.vibrant-mode .border-2 .text-muted-foreground,
+body.vibrant-mode .card p,
+body.vibrant-mode .card span,
+body.vibrant-mode .card div,
+body.vibrant-mode .card h1,
+body.vibrant-mode .card h2,
+body.vibrant-mode .card h3,
+body.vibrant-mode .card h4,
+body.vibrant-mode .border-2 p,
+body.vibrant-mode .border-2 span,
+body.vibrant-mode .border-2 div,
+body.vibrant-mode .border-2 h4,
+body.vibrant-mode .border-2 h3 {
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+/* Inner borders (like badges) should also be white */
+body.vibrant-mode .card *,
+body.vibrant-mode .brutal-card *,
+body.vibrant-mode .border-2 * {
+  border-color: #ffffff !important;
+}
+
+/* BUTTONS inside CARDS: styling for 'Code' and 'Demo' buttons */
+body.vibrant-mode .card button,
+body.vibrant-mode .card a,
+body.vibrant-mode .brutal-card button,
+body.vibrant-mode .brutal-card a {
+  background-color: transparent !important;
+  /* Fixes White-on-White issue */
+  color: white !important;
+  border-color: white !important;
+}
+
+body.vibrant-mode .card button:hover,
+body.vibrant-mode .card a:hover,
+body.vibrant-mode .brutal-card button:hover,
+body.vibrant-mode .brutal-card a:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Navbar specific override to ensure it stays white bg / black text */
+body.vibrant-mode nav {
+  background-color: #ffffff !important;
+}
+
+body.vibrant-mode nav .text-muted-foreground {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+body.vibrant-mode nav svg {
+  stroke: black !important;
+}
+
+body.vibrant-mode section#certifications {
+  background-color: #6366f1 !important;
+  /* Electric Indigo */
+  color: black !important;
+}
+
+body.vibrant-mode section#achievements {
+  background-color: #14b8a6 !important;
+  /* Teal */
+  color: black !important;
 }
